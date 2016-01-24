@@ -3,10 +3,12 @@
 <head>
   <title>Who am I</title>
   <meta name="viewport" content="initial-scale=1">
+  <meta charset="UTF-8">
   <style> * { padding:0px; margin:0px; } </style>
-  <link rel="stylesheet" href='./css/main.css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="./js/main.js"></script>
+  <link rel="stylesheet" href='./css/main.css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
   <div id='sidebar'>
@@ -15,17 +17,20 @@
     <nav>
       <a href='#about' class='selected'><span></span><span>About Me</span></a>
       <a href='#contact'><span></span><span>Contact</span></a>
-      <a href='#hello'><span></span><span>Hello world</span></a>
-      <a href='#pew'><span></span><span>Pew</span></a>
     </nav>
   </div>
   <main>
     <section id='about'>
-      <h1 id='whoAmI'>I am a <span id='iAmA'></span><span class='cursor'></span></h1>
+      <h1 id='whoAmI'>Hi, I'm Daniel Cavazos, and I'm a <span id='iAmA'></span></h1>
+      <p>Born and raised mostly in Fresno, California, I'm a self taught programmer. I picked up computers fairly early at the age of 5 or so, and tried out game developing at 10. I learned C with the help of some strangers online because my mom never taught me about stranger danger. Thankfully nothing creepy happened and programming became a great tool for me. Through it I found a real purpose in life and kept learning every chance I got.</p>
+      <p>Around the age of 13, I stumbled upon IRC and was amazed by the bots crawling the networks. It was then that I learned Perl. I started writing my own IRC bots and It's become sort of an obsession to constantly rewrite the original program. Every time I rewrite it, the program gets more concise, and easier to build upon. At the time of writing, I'm starting to turn the project into a perl module so that things are more object oriented!</p>
+      <p>Once I finally hit an age where people started considering me an actual person, I started college, and chose Web Development as my master almost entirely because I was too lazy to actually look at other choices. While I consider web development fairly easy and lacking in a challenge, I feel it's probably a decent career path, so why not.</p>
+      <p>Game development is still really interesting to me however, and when I have time, I try to create nifty little games in java or javascript. I've even plans on making a MUD using Dart and some fancy WebSockets someday. Education will always come first though, so those kinds of projects are quite neglected.</p>
     </section>
-      <section id='contact'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </section>
+    <section id='contact'>
+      <h1>You used to call me on your cell phone</h1>
+      <i class="fa fa-mobile"></i>559-697-5376
+    </section>
   </main>
 </body>
 </html>

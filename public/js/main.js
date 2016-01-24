@@ -26,6 +26,8 @@ function newMe($target, list) {
   );
 }
 
+function updateNav($nav,selected) { $nav.children().removeClass('selected').filter(selected).addClass('selected'); }
+function scrollTo(id) {$('html').animate({scrollTop:$(id).offset().top},500,'swing');history.pushState(null,null,id);}
 // Note how I don't comment the most complicated bit of code. That's because I'm lazy.
 // This is supposed to be a page supporting me.
 // It's not laziness.
@@ -39,7 +41,7 @@ $(function(){
     // Where we're actually placing the what I am text.
     $('#iAmA'),
     // List of things I am. (Self proclaimed, of course) Maybe I'll move this to some ajax call or something.
-    ['Web Developer','Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts (Perl)','Chill Dude','Walking Dead Fan','']
+    ['Web Developer','Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts (Perl)','Chill Dude','Walking Dead Fan','Rhett and Link Fan','Writer','Magikarp Sympathizer','Sarcastic Asshole']
   );
 
   // Fancy header shit.
@@ -49,13 +51,25 @@ $(function(){
 
   // Make navigation stick to the top when we scroll down
   var $nav = $('nav');
+  var $sections = $('main > section');
+  var selected = '#about';
   // Grab our original offset, we need this.
   var originalNav = $nav.offset().top;
   $(window).scroll(function(e) {
     var scroll = $(window).scrollTop();
+    // var height = $(window).height();
+    // var at = Math.floor(scroll/height);
     // On initial position, if the scroll position passes the nav's position, then fix it.
     if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
     // Once we scroll back up, place the navigation back where it belongs.
     else if(($nav.css('position') == 'fixed') && (scroll <= originalNav)) $nav.css({position:'static'});
+
+    // Next let's figure out where we are.
+    var at = 'about';
+    $sections.each(function(i,e) { if(scroll >= $(e).offset().top) at = e.id; });
+    if((selected != at) && (selected = at)) updateNav($nav,'a[href="#'+at+'"]');
   });
+
+  // Fancy navigation interaction
+  $nav.on('click','a', function(e){ e.preventDefault(); scrollTo($(e.target.parentNode).attr('href')); });
 });

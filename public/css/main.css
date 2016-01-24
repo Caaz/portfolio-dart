@@ -72,7 +72,12 @@ main {
       text-indent: 2em;
       margin: 1em 0px; }
     main > section > h1 {
+      color: #b400ff;
       align-self: center; }
+      main > section > h1 * {
+        color: #b400ff; }
+  main a {
+    color: #b400ff; }
 
 .spread {
   list-style: none;

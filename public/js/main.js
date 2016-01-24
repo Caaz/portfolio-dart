@@ -41,7 +41,7 @@ $(function(){
     // Where we're actually placing the what I am text.
     $('#iAmA'),
     // List of things I am. (Self proclaimed, of course) Maybe I'll move this to some ajax call or something.
-    ['Web Developer','Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts (Perl)','Chill Dude','Walking Dead Fan','Rhett and Link Fan','Writer','Magikarp Sympathizer','Sarcastic Asshole']
+    ['Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts','Chill Dude','Walking Dead Fan','Magikarp Sympathizer','Sarcastic Asshole']
   );
 
   // Fancy header shit.
@@ -57,8 +57,6 @@ $(function(){
   var originalNav = $nav.offset().top;
   $(window).scroll(function(e) {
     var scroll = $(window).scrollTop();
-    // var height = $(window).height();
-    // var at = Math.floor(scroll/height);
     // On initial position, if the scroll position passes the nav's position, then fix it.
     if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
     // Once we scroll back up, place the navigation back where it belongs.

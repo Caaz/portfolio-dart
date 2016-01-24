@@ -1,0 +1,8 @@
+# Sass stuff!
+public/scss
+public/.sass-cache
+
+# Dart shit
+pubspec.lock
+.packages
+packages

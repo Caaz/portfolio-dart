@@ -41,7 +41,7 @@ $(function(){
     // Where we're actually placing the what I am text.
     $('#iAmA'),
     // List of things I am. (Self proclaimed, of course) Maybe I'll move this to some ajax call or something.
-    ['Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts','Chill Dude','Walking Dead Fan','Magikarp Sympathizer','Sarcastic Asshole']
+    ['Slacker','Hacker','Programmer','Wizard','Level 70 Mohawk Night Elf','Pokemon Trainer','Professional?','Hobbyist','Psuedo-RNG Sympathizer','Procrastinator','Bonefide Badass','Guy With a Hashbang Tattoo','Planner','Master of the Dark Arts','Chill Dude','Walking Dead Fan','Magikarp Sympathizer','Sarcastic Asshole','College Student']
   );
 
   // Fancy header shit.

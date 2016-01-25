@@ -66,14 +66,14 @@ $(function(){
   var selected;
   $(window).scroll(function(e) {
     var scroll = $(window).scrollTop();
-
+    var height = $(window).height();
     // Update the navigation's position status depending on the scroll amount!
     if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
     else if(($nav.css('position') == 'fixed') && (scroll <= originalNav)) $nav.css({position:'static'});
 
     // Update the navigation link's selected status depending on where I am.
     var at = 'about';
-    $sections.each(function(i,e) { if(scroll >= $(e).offset().top) at = e.id; });
+    $sections.each(function(i,e) { if(scroll+height/2 >= $(e).offset().top) at = e.id; });
     if((selected != at) && (selected = at)) $nav.children().removeClass('selected').filter('a[href="#'+at+'"]').addClass('selected');
   });
 

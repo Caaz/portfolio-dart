@@ -1,5 +1,9 @@
 .dim {
+  display: none;
   opacity: .5; }
+
+#name:hover .dim {
+  display: inline; }
 
 * {
   font-family: sans-serif; }

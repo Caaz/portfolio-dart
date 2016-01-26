@@ -40,14 +40,14 @@ $(function(){
       'Hacker',
       'Programmer',
       'Wizard',
-      'Level 70 Mohawk Night Elf',
+      'Level 80 Night Elf Mohawk',
       'Pokemon Trainer',
       'Professional?',
       'Hobbyist',
       'Psuedo-RNG Sympathizer',
       // 'Procrastinator', // Fine.
-      'Bonefide Badass',
       'Guy With a Hashbang Tattoo',
+      'Bonefide Badass',
       'Planner',
       'Master of the Dark Arts',
       'Chill Dude',
@@ -76,7 +76,9 @@ $(function(){
     $sections.each(function(i,e) { if(scroll+height/2 >= $(e).offset().top) at = e.id; });
     if((selected != at) && (selected = at)) $nav.children().removeClass('selected').filter('a[href="#'+at+'"]').addClass('selected');
   });
+  // Force an update immediately!
+  $(window).scroll();
 
   // Fancy navigation interaction
-  $nav.on('click','a', function(e){e.preventDefault();$('html').animate({scrollTop:$($(e.target.parentNode).attr('href')).offset().top},500,'swing');history.pushState(null,null,id);});
+  $nav.on('click','a', function(e){var id=$(e.target.parentNode).attr('href');e.preventDefault();$('html').animate({scrollTop:$(id).offset().top},500,'swing');history.pushState(null,null,id);});
 });

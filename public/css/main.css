@@ -13,49 +13,46 @@ h1 {
   font-variant: small-caps; }
 
 body {
-  display: flex;
-  background-color: #FFF; }
+  display: flex; }
 
-#sidebar {
-  background-color: #FFF;
+aside {
   display: flex;
   flex-direction: column;
   width: 100px; }
-  #sidebar h1 {
+  aside h1 {
     width: 100px;
     text-align: center;
     font-size: 1.1em; }
-  #sidebar img {
+  aside img {
     padding-top: 10px;
     align-self: center;
     width: 80%;
     border-radius: 50%; }
-
-nav {
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-  padding-top: 10px; }
-  nav a {
-    position: relative;
-    color: #b400ff; }
-    nav a.selected span:first-child {
-      width: 100%; }
-    nav a.selected span:last-child {
-      color: #FFF; }
-    nav a span:first-child {
-      display: inline-block;
-      background-color: #b400ff;
-      height: 100%;
-      width: 0%;
-      transition: width 1s; }
-    nav a span:last-child {
-      transition: color 1s;
-      width: 100px;
-      text-align: center;
-      position: absolute;
-      top: 0px;
-      left: 0px; }
+  aside nav {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    padding-top: 10px; }
+    aside nav a {
+      position: relative;
+      color: #b400ff; }
+      aside nav a.selected span:first-child {
+        width: 100%; }
+      aside nav a.selected span:last-child {
+        color: #FFF; }
+      aside nav a span:first-child {
+        display: inline-block;
+        background-color: #b400ff;
+        height: 100%;
+        width: 0%;
+        transition: width 1s; }
+      aside nav a span:last-child {
+        transition: color 1s;
+        width: 100px;
+        text-align: center;
+        position: absolute;
+        top: 0px;
+        left: 0px; }
 
 main {
   display: flex;
@@ -70,7 +67,6 @@ main {
     align-items: center;
     flex-direction: column;
     width: 70%;
-    background: #FFF;
     min-height: 100vh; }
     main > section > p {
       text-indent: 2em;

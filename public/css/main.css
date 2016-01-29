@@ -26,7 +26,8 @@ aside {
   aside img {
     padding-top: 10px;
     align-self: center;
-    width: 80%;
+    width: 80px;
+    height: 80px;
     border-radius: 50%; }
   aside nav {
     display: flex;

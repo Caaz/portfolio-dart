@@ -2,8 +2,7 @@
 $.fn.typeText = function(text,callback) {
   if((typeof text) == 'string') { text = text.split(''); this.text(''); }
   this.text(this.text() + text.shift());
-  var $self = this;
-  if(text.length) setTimeout(function(){ $self.typeText(text, callback); }, 50);
+  if(text.length) setTimeout(function($self){ $self.typeText(text, callback); }, 50, this);
   else if(callback) callback();
   return this;
 }
@@ -14,7 +13,7 @@ $.fn.eraseText = function(callback) {
     t.textContent = t.textContent.substr(0,t.textContent.length-1);
     if(t.textContent.length) hasMore = true;
   });
-  if(hasMore) { var $self = this; setTimeout(function() { $self.eraseText(callback); }, 100); }
+  if(hasMore) { setTimeout(function($self) { $self.eraseText(callback); }, 100, this); }
   else if(callback) callback();
   return this;
 }
@@ -56,7 +55,7 @@ $(function(){
       'a Sarcastic Asshole',
       'a College Student',
       'an X-Files Lover',
-      'Annoyed by Gramar',
+      'Annoyed by Grammar',
       'Probably Sleeping',
       'Addicted to Starbucks',
       'Loving Electro-Swing',
@@ -74,18 +73,16 @@ $(function(){
   var selected;
   $(window).scroll(function(e) {
     var scroll = $(window).scrollTop();
-    var height = $(window).height();
     // Update the navigation's position status depending on the scroll amount!
     if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
     else if(($nav.css('position') == 'fixed') && (scroll <= originalNav)) $nav.css({position:'static'});
 
     // Update the navigation link's selected status depending on where I am.
     var at = 'about';
+    var height = $(window).height();
     $sections.each(function(i,e) { if(scroll+height/2 >= $(e).offset().top) at = e.id; });
     if((selected != at) && (selected = at)) $nav.children().removeClass('selected').filter('a[href="#'+at+'"]').addClass('selected');
-  });
-  // Force an update immediately!
-  $(window).scroll();
+  }).scroll();
 
   // Fancy navigation interaction
   $nav.on('click','a', function(e){var id=$(e.target.parentNode).attr('href');e.preventDefault();$('html').animate({scrollTop:$(id).offset().top},500,'swing');history.pushState(null,null,id);});

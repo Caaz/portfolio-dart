@@ -36,26 +36,34 @@ function scrollTo(id) {$('html').animate({scrollTop:$(id).offset().top},500,'swi
 // Alright here we actually execute page shit.
 $(function(){
   newMe($('#iAmA'), [
-      'Slacker',
-      'Hacker',
-      'Programmer',
-      'Wizard',
-      'Level 80 Night Elf Mohawk',
-      'Pokemon Trainer',
-      'Professional?',
-      'Hobbyist',
-      'Psuedo-RNG Sympathizer',
-      // 'Procrastinator', // Fine.
-      'Guy With a Hashbang Tattoo',
-      'Bonefide Badass',
-      'Planner',
-      'Master of the Dark Arts',
-      'Chill Dude',
-      'Walking Dead Fan',
-      'Magikarp Sympathizer',
-      'Sarcastic Asshole',
-      'College Student',
-      'X-Files Lover'
+      'A Slacker',
+      'A Hacker',
+      'A Programmer',
+      'A Wizard',
+      'A Level 80 Night Elf Mohawk',
+      'A Pokemon Trainer',
+      'A Professional?',
+      'A Hobbyist',
+      'A Psuedo-RNG Sympathizer',
+      // 'A Procrastinator', // Fine.
+      'A Guy With a Hashbang Tattoo',
+      'A Bonefide Badass',
+      'A Planner',
+      'A Master of the Dark Arts',
+      'A Chill Dude',
+      'A Walking Dead Fan',
+      'A Luvdisc Sympathizer',
+      'A Sarcastic Asshole',
+      'A College Student',
+      'An X-Files Lover',
+      'Annoyed by Gramar',
+      'Probably Sleeping',
+      'Addicted to Starbucks',
+      'Loving Electro-Swing',
+      'Trying to Keep my Git Streak Going',
+      'Not Dead, Just Asleep',
+      'Dancing on a chair',
+      'Better Than You'
     ]
   );
 

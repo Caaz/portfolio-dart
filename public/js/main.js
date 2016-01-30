@@ -41,7 +41,6 @@ $(function(){
       'a Wizard',
       'a Level 80 Night Elf Mohawk',
       'a Pokemon Trainer',
-      'a Professional?',
       'a Hobbyist',
       'a Psuedo-RNG Sympathizer',
       // 'a Procrastinator', // Fine.
@@ -62,7 +61,10 @@ $(function(){
       'Trying to Keep my Git Streak Going',
       'Not Dead, Just Asleep',
       'Dancing on a chair',
-      'Better Than You'
+      'Trying to be Professional',
+      'Just a City Boy',
+      'Saving up for a Microwave',
+      'Sleep Deprived'
     ]
   );
 

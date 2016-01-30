@@ -15,39 +15,47 @@ h1 {
 body {
   display: flex; }
 
-aside {
+#hamburger {
+  display: none;
+  min-width: 50px;
+  margin-right: -50px;
+  width: 50px !important;
+  height: 50px !important; }
+
+#menu {
   display: flex;
   flex-direction: column;
+  transition: margin-left 1s;
   width: 100px; }
-  aside h1 {
+  #menu h1 {
     width: 100px;
     text-align: center;
     font-size: 1.1em; }
-  aside img {
+  #menu img {
     padding-top: 10px;
     align-self: center;
     width: 80px;
     height: 80px;
     border-radius: 50%; }
-  aside nav {
+  #menu nav {
     display: flex;
     flex-direction: column;
     width: 100px;
     padding-top: 10px; }
-    aside nav a {
+    #menu nav a {
       position: relative;
       color: #b400ff; }
-      aside nav a.selected span:first-child {
+      #menu nav a.selected span:first-child {
         width: 100%; }
-      aside nav a.selected span:last-child {
+      #menu nav a.selected span:last-child {
         color: #FFF; }
-      aside nav a span:first-child {
+      #menu nav a span:first-child {
         display: inline-block;
         background-color: #b400ff;
         height: 100%;
         width: 0%;
         transition: width 1s; }
-      aside nav a span:last-child {
+      #menu nav a span:last-child {
         transition: color 1s;
         width: 100px;
         text-align: center;
@@ -67,7 +75,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 70%;
+    width: calc(100% - 100px);
     min-height: 100vh; }
     main > section > p {
       text-indent: 2em;
@@ -89,5 +97,11 @@ main {
   .spread li {
     margin: 1em; }
 
+@media (max-width: 600px), (orientation: portrait) {
+  #menu {
+    margin-left: -100px; }
+
+  nav {
+    display: none !important; } }
 a, a:hover, a:active, a:focus {
   outline: transparent !important; }

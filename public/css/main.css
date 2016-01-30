@@ -52,7 +52,7 @@ body {
       #menu nav a span:first-child {
         display: inline-block;
         background-color: #b400ff;
-        height: 100%;
+        height: 1.1em;
         width: 0%;
         transition: width 1s; }
       #menu nav a span:last-child {

@@ -46,7 +46,6 @@ $(function(){
       // 'a Procrastinator', // Fine.
       'a Guy With a Hashbang Tattoo',
       'a Bonefide Badass',
-      'a Planner',
       'a Master of the Dark Arts',
       'a Chill Dude',
       'a Walking Dead Fan',
@@ -66,7 +65,7 @@ $(function(){
       'Saving up for a Microwave',
       'Sleep Deprived',
       'Feeding PB&J to the Fish',
-      "Just Here so I Don't Get Fined"
+      "Just Here so I Don't Get Fined",
     ]
   );
 

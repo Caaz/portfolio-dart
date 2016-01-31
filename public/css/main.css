@@ -82,7 +82,8 @@ main {
       margin: 1em 0px; }
     main > section > h1 {
       color: #b400ff;
-      align-self: center; }
+      text-align: center;
+      line-height: 1.2em; }
       main > section > h1 * {
         color: #b400ff; }
   main a {
@@ -102,6 +103,9 @@ main {
     margin-left: -100px; }
 
   nav {
-    display: none !important; } }
+    display: none !important; }
+
+  main > section > h1 {
+    height: 2.4em; } }
 a, a:hover, a:active, a:focus {
   outline: transparent !important; }

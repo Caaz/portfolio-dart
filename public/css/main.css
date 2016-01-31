@@ -15,13 +15,6 @@ h1 {
 body {
   display: flex; }
 
-#hamburger {
-  display: none;
-  min-width: 50px;
-  margin-right: -50px;
-  width: 50px !important;
-  height: 50px !important; }
-
 #menu {
   display: flex;
   flex-direction: column;

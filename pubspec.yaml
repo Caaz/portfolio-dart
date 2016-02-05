@@ -1,3 +1,7 @@
-name: Portfolio
+name: caaz_me
+version: 0.0.1
+description: >
+  Server side software for a dynamic site.
+author: Daniel Caaz <DCaazy@gmail.com>
 dependencies:
   express: 0.1.6

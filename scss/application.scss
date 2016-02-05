@@ -1,0 +1,110 @@
+$color:
+// Accent
+rgb(0, 255, 0)
+rgba(0,0,0,.7)
+rgba(0,0,0,.9);
+$header-size:50px;
+$button-size:25px;
+* { font-family:sans-serif; margin:0px; padding:0px; }
+body {
+  min-height:100vh;
+  color:#FFF;
+  background-image: url('/res/artsy.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  > header {
+    height:$header-size;
+    padding:0 10px;
+    background-color:nth($color,2);
+    display:flex;
+    align-items:center;
+    > h1 {
+      font-size:20px;
+      font-weight:100;
+      flex-grow:1;
+    }
+    > span {
+      font-size:$button-size!important;
+      // text-align:center;
+      cursor:pointer;
+    }
+  }
+}
+nav {
+  display:none;
+  background:nth($color,3);
+  width:100vw;
+  height:100vh;
+  position:fixed!important;
+  flex-direction:column;
+  z-index:2;
+  > header {
+    height:$header-size;
+    padding:10px;
+    display:flex;
+    justify-content: flex-end;
+    > span {
+      font-size:$header-size !important;
+      // font-size:$hamburger-size !important;
+      cursor:pointer;
+    }
+  }
+  > section {
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    a {
+      color:#FFF;
+      font-size:5vh;
+      text-decoration:none;
+      font-variant:small-caps;
+    }
+  }
+}
+main {
+  background-color:nth($color,2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  // justify-content:center;
+  max-height:calc(100vh - #{$header-size});
+  overflow-y:scroll;
+  flex:1;
+  section {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:20px;
+    width:50vw;
+    min-width:640px;
+    min-height:calc(100vh - #{$header-size});
+    h1 {
+      align-self:center;
+      font-weight:100;
+      font-size:20px;
+    }
+  }
+}
+.spread  {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width:100%;
+  list-style: none;
+  margin:0px;
+  padding:0px;
+  li {
+    margin:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+}
+.dim {
+  opacity:.3;
+}

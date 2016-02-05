@@ -1,8 +1,9 @@
-# Sass stuff!
-public/scss
-public/.sass-cache
-
-# Dart shit
-pubspec.lock
-.packages
+# Typical Dart, Pub, Sass, and Jade stuff.
 packages
+.packages
+pubspec.lock
+jade.views.dart
+.sass-cache
+
+# Compiled stuff that will be recompiled anyway.
+public/css

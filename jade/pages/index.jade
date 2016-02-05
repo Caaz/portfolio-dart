@@ -1,0 +1,25 @@
+extends ../layouts/application.jade
+block head
+  script(src='/js/index.js')
+  
+block main
+  section#about
+    ul.spread
+      each skill in ['Perl','Dart','C','C++','Objective C','Ruby on Rails','Python','Go','Java','Javascript','JQuery','HTML5','CSS3','Jade','Sass'];
+        li= skill
+  section#projects
+    h1 Projects
+    ul
+      li
+        a(href='https://github.com/Caaz/portfolio-dart') Portfolio
+        p This page! And the backend that supports it. It's utilizing jade and sass through some dart wizardry.
+  section#contact
+    h1 You used to call me on your cell phone
+    ul.spread
+      li: a(href='mailto:DCaazy@gmail.com') DCaazy@gmail.com
+      li: a(href='https://github.com/Caaz') Github
+      li: a(href='http://www.facebook.com/Caazy') Facebook
+      li: a(href='http://www.twitter.com/DCaazy') Twitter
+      li: a(href='https://www.instagram.com/dcaazy') Instagram
+      li: a(href='https://caaz.tk') Tumblr
+      li: a(href='http://chat.mibbit.com/?server=rizon.mibbit.org&channel=%23TheFusion') #TheFusion@irc.rizon.net

@@ -8,13 +8,10 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
     block head
   body
-    nav
-      header
-        span.fa.fa-close.fa-fw
-      section
-        include ../partials/links.jade
     header
       h1 Hi, I'm Daniel Ca<span class='dim'>v</span>az<span class='dim'>os</span>, and I'm <span id='iAmA'></span>
-      span.fa.fa-fw.fa-bars
+      nav
+        include ../partials/links.jade
+      //- span.fa.fa-fw.fa-bars
     main
       block main

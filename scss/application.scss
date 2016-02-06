@@ -1,8 +1,11 @@
 $color:
 // Accent
-rgb(0, 255, 0)
+#FFF
 rgba(0,0,0,.7)
-rgba(0,0,0,.9);
+// Header Background
+#FFF
+// Header Foreground
+#000;
 $header-size:50px;
 $button-size:25px;
 * { font-family:sans-serif; margin:0px; padding:0px; }
@@ -12,57 +15,32 @@ body {
   background-image: url('/res/artsy.jpg');
   background-size: cover;
   background-attachment: fixed;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
   > header {
+    background-color:nth($color,3);
+    color:nth($color,4);
+    position:fixed;
     height:$header-size;
     padding:0 10px;
-    background-color:nth($color,2);
-    display:flex;
-    align-items:center;
-    > h1 {
-      font-size:20px;
-      font-weight:100;
-      flex-grow:1;
-    }
-    > span {
-      font-size:$button-size!important;
-      // text-align:center;
-      cursor:pointer;
-    }
-  }
-}
-nav {
-  display:none;
-  background:nth($color,3);
-  width:100vw;
-  height:100vh;
-  position:fixed!important;
-  flex-direction:column;
-  z-index:2;
-  > header {
-    height:$header-size;
-    padding:10px;
-    display:flex;
-    justify-content: flex-end;
-    > span {
-      font-size:$header-size !important;
-      // font-size:$hamburger-size !important;
-      cursor:pointer;
-    }
-  }
-  > section {
-    flex-grow:1;
     display:flex;
     flex-direction:column;
-    justify-content:space-around;
     align-items:center;
-    a {
-      color:#FFF;
-      font-size:5vh;
-      text-decoration:none;
-      font-variant:small-caps;
+    > h1 {
+      font-size:15px;
+      font-weight:100;
+    }
+    > nav {
+      display:flex;
+      flex-grow:1;
+      align-items:flex-end;
+      justify-content: space-around;
+      width:100vw;
+      > a {
+        font-size:15px;
+        font-weight:100;
+        text-decoration:none;
+        color:nth($color,4);
+        // text-shadow: -1px -1px 0 nth($color,3), 1px -1px 0 nth($color,3), -1px 1px 0 nth($color,3), 1px 1px 0 nth($color,3);
+      }
     }
   }
 }
@@ -71,17 +49,15 @@ main {
   display:flex;
   flex-direction:column;
   align-items:center;
-  // justify-content:center;
-  max-height:calc(100vh - #{$header-size});
-  overflow-y:scroll;
   flex:1;
   section {
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:20px;
-    width:50vw;
-    min-width:640px;
+    width:calc(100vw - 40px);
+    padding:0 20px;
+    min-width:600px;
+    padding-top:$header-size;
     min-height:calc(100vh - #{$header-size});
     h1 {
       align-self:center;
@@ -105,6 +81,5 @@ main {
     align-items:center;
   }
 }
-.dim {
-  opacity:.3;
-}
+.dim { opacity:.3; }
+a:focus { outline:transparent!important; }

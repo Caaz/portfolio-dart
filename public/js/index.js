@@ -71,23 +71,37 @@ $(function(){
   );
 
   // Fancy dynamic navigation stuff.
+  // var originalNav = $nav.offset().top;
+  // var $sections = $('main > section');
+  // var selected;
+  // $(window).scroll(function(e) {
+  //   var scroll = $(window).scrollTop();
+  //   // Update the navigation's position status depending on the scroll amount!
+  //   if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
+  //   else if(($nav.css('position') == 'fixed') && (scroll <= originalNav)) $nav.css({position:'static'});
+  //
+  //   // Update the navigation link's selected status depending on where I am.
+  //   var at = 'about';
+  //   var height = $(window).height();
+  //   $sections.each(function(i,e) { if(scroll+height/2 >= $(e).offset().top) at = e.id; });
+  //   if((selected != at) && (selected = at)) $nav.children().removeClass('selected').filter('a[href="#'+at+'"]').addClass('selected');
+  // }).scroll();
+  //
+  // // Fancy navigation interaction
   var $nav = $('nav');
-  var originalNav = $nav.offset().top;
-  var $sections = $('main > section');
-  var selected;
-  $(window).scroll(function(e) {
-    var scroll = $(window).scrollTop();
-    // Update the navigation's position status depending on the scroll amount!
-    if(($nav.css('position') == 'static') && (scroll > originalNav)) $nav.css({position:'fixed',top:'0px',left:'0px'});
-    else if(($nav.css('position') == 'fixed') && (scroll <= originalNav)) $nav.css({position:'static'});
-
-    // Update the navigation link's selected status depending on where I am.
-    var at = 'about';
-    var height = $(window).height();
-    $sections.each(function(i,e) { if(scroll+height/2 >= $(e).offset().top) at = e.id; });
-    if((selected != at) && (selected = at)) $nav.children().removeClass('selected').filter('a[href="#'+at+'"]').addClass('selected');
-  }).scroll();
-
-  // Fancy navigation interaction
-  $nav.on('click','a', function(e){var id=$(e.target.parentNode).attr('href');e.preventDefault();$('html').animate({scrollTop:$(id).offset().top},500,'swing');history.pushState(null,null,id);});
+  var $scrollable = $('html');
+  $nav.on('click','a', function(e){
+    e.preventDefault();
+    var id=$(e.target).attr('href');
+    $scrollable.animate({
+      scrollTop:
+        // The current scroll position
+        // $scrollable.scrollTop()
+        // The target's position relative to it's parent.
+        + $(id).position().top
+        // The scrollable's position relative to it's parent
+        // - $scrollable.position().top
+      },500,'swing');
+    history.pushState(null,null,id);
+  });
 });

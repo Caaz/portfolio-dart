@@ -12,5 +12,5 @@ void main(){
       ctx.render('index');
     });
 
-  app.listen("127.0.0.1", 3000);
+  app.listen("0.0.0.0", 80);
 }

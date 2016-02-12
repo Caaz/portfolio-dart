@@ -13,7 +13,7 @@ main() async {
   // Index page, nothing fancy.
   ..get('/', (ctx){ ctx.sendHtml(pages['index']()); })
   // Start listening for connections
-  ..listen('0.0.0.0', 3000);
+  ..listen('0.0.0.0', 80);
 }
 
 Future<Map> _compile() async {

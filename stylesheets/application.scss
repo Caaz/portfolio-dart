@@ -3,3 +3,15 @@ $colors:
 #FFF
 // Background Color
 #222;
+
+body {
+  display:flex;
+  width:100vw;
+  height:100vh;
+  > aside {
+    background-color:#222;
+  }
+  > main {
+    flex-grow:1;
+  }
+}

@@ -57,7 +57,7 @@ $(function(){
       'Feeding PB&J to the Fish',
       "Just Here so I Don't Get Fined",
       'a Pro at RegEx',
-      'a Tutor at FCC!'
+      'a Tutor at FCC!a'
     ]
   );
 });

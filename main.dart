@@ -11,16 +11,33 @@ main() async {
   // Compile jade pages.
   await _compile();
   new Express()
-  // All the static files are handled right here.
-  ..use(new StaticFileHandler('public'))
+  // Fancy Static file handler that renders the 404 jade file when there's nothing there!
+  ..use(new HybridFileHandler('public'))
   // Index page, nothing fancy.
   ..get('/', (ctx) => renderPage(ctx,'index'))
-  // Handle all 404s!
-  ..addRequestHandler((HttpRequest req) => req.method == 'GET', (ctx) => ((!ctx.closed) && (renderPage(ctx,'404'))))
-  // Start listening for connections
   ..listen('0.0.0.0', 80);
 }
 renderPage(HttpContext ctx,String page) => ctx..sendHtml(pages[page]())..end();
+
+class HybridFileHandler extends StaticFileHandler {
+  String atPath;
+  HybridFileHandler([this.atPath]);
+  void execute(HttpContext ctx){
+    String path = relativePath(ctx.req.uri.path);
+    logDebug("serving $path");
+    File file = new File(path);
+    file.exists().then((bool exists) {
+      if (exists) {
+        ctx.responseContentType = ContentTypes.getContentType(file);
+        file.openRead()
+        .pipe(ctx.res)
+        .catchError((e) => ctx.sendText("error sending '$path': $e", contentType: "text/plain", httpStatus: 500, statusReason:"static file error"));
+      } else
+        renderPage(ctx,'404');
+    });
+  }
+}
+
 Future<Map> _compile() async {
   // File name regex. this as opposed to ./this.jade
   RegExp fname = new RegExp(r'.+/(.+?)\.(?:.+?)$');

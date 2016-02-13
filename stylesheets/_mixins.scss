@@ -1,14 +1,14 @@
 
 @mixin text-outline($width, $spread) {
-  text-shadow:
-    $width 0 $spread #000,
-    0 $width $spread #000,
-    -#{$width} 0 $spread #000,
-    0 -#{$width} $spread #000,
-    $width $width $spread #000,
-    -#{$width} -#{$width} $spread #000,
-    -#{$width} $width $spread #000,
-    $width -#{$width} $spread #000;
+  // text-shadow:
+  //   $width 0 $spread #000,
+  //   0 $width $spread #000,
+  //   -#{$width} 0 $spread #000,
+  //   0 -#{$width} $spread #000,
+  //   $width $width $spread #000,
+  //   -#{$width} -#{$width} $spread #000,
+  //   -#{$width} $width $spread #000,
+  //   $width -#{$width} $spread #000;
 }
 @mixin diamond($maxWidth, $background) {
   transform: rotate(45deg);

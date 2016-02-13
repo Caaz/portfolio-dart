@@ -1,6 +1,12 @@
 @import "variables";
 @import "math";
+@mixin rotation($deg) {
+  -ms-transform: rotate($deg); /* IE 9 */
+  -webkit-transform: rotate($deg); /* Chrome, Safari, Opera */
+  transform: rotate($deg);
+}
 @mixin diamond($maxWidth, $background) {
+  @include rotation(45deg);
   $size:sqrt(pow($maxWidth,2) / 2);
   $offset: $maxWidth - 100;
   $remainder:((-$size + $maxWidth - $offset) / 2)+vw;
@@ -14,8 +20,8 @@
   left:$remainder;
   z-index:-1;
   overflow:hidden;
-  transform: rotate(45deg);
   &::before {
+    @include rotation(-45deg);
     content:'';
     display:block;
     position:absolute;
@@ -26,7 +32,7 @@
     background-image:$background;
     background-attachment:fixed;
     background-size:cover;
-    transform: rotate(-45deg);
+    // transform: rotate(-45deg);
   }
 }
 

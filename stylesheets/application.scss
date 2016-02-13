@@ -1,45 +1,52 @@
 @import "variables";
+@import "mixins";
 
+$sizeNav:30px;
 $sizeSide:40px;
 $sizeBottom:$sizeSide;
-
 * {
-  margin:0px;
-  padding:0px;
+  margin:0px; padding:0px;
+  font-family:sans-serif;
 }
+h1 { font-variant:small-caps; }
 body {
-background-image:nth($images,3);
-background-attachment: fixed;
-background-size:cover;
-  display:flex;
-  width:100vw;
-  height:100vh;
+  background-image:nth($images,3);
+  background-attachment: fixed;
+  background-size:cover;
   > nav {
-    width:$sizeSide;
-    background-color:nth($colors,2);
+    z-index:10;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:$sizeNav;
     display:flex;
-    flex-direction:column;
-    align-items: center;
-    font-size:$sizeSide/1.6;
+    justify-content: center;
+    background-color: nth($colors,2);
     > a {
       position:relative;
       display:flex!important;
-      justify-content:center;
       align-items:center;
-      width:$sizeSide;
-      height:$sizeSide;
-      color:nth($colors,1);
+      justify-content:center;
+      font-size:$sizeNav / 1.5!important;
       text-decoration:none;
-      &:hover > i:first-of-type { border-right-width:$sizeSide; }
-      > i:first-of-type {
+      color:nth($colors,1);
+      width:$sizeNav;
+      height:$sizeNav;
+      &::after {
+        content:'';
+        box-sizing:border-box;
         position:absolute;
-        box-sizing: border-box;
-        width:$sizeSide;
-        height:$sizeSide;
-        top:0;
+        width:$sizeNav;
+        height:$sizeNav;
         left:0;
+        top:0;
         border:0 solid nth($colors,3);
-        transition: border-right-width 200ms linear;
+        z-index:-1;
+        transition:border-top-width 200ms linear;
+      }
+      &:hover::after {
+        border-top-width:$sizeNav;
       }
     }
   }
@@ -47,15 +54,42 @@ background-size:cover;
     color:nth($colors,1);
     flex-grow:1;
     z-index:1;
-    overflow-y:scroll;
+    // overflow-y:scroll;
     overflow-x:hidden;
-    // min-height:100vh;
     > section {
+      box-sizing: border-box;
+      padding:50px;
+      padding-top:$sizeNav;
       min-height:100vh;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
+      > h1 {
+        @include text-outline(2px, 1px);
+        font-size:20px;
+        text-align:center;
+      }
+      > p {
+        margin-top:20px;
+        text-indent:50px;
+      }
+      > ul {
+        list-style:none;
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        > li {
+          margin:20px 20px 0 20px;
+          @include text-outline(1px, 1px);
+        }
+      }
+      > a {
+        padding-top:20px;
+        color:nth($colors,1);
+        text-decoration:none;
+      }
     }
   }
 }

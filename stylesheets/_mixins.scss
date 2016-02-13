@@ -1,0 +1,42 @@
+
+@mixin text-outline($width, $spread) {
+  text-shadow:
+    $width 0 $spread #000,
+    0 $width $spread #000,
+    -#{$width} 0 $spread #000,
+    0 -#{$width} $spread #000,
+    $width $width $spread #000,
+    -#{$width} -#{$width} $spread #000,
+    -#{$width} $width $spread #000,
+    $width -#{$width} $spread #000;
+}
+@mixin diamond($maxWidth, $background) {
+  transform: rotate(45deg);
+  $size:sqrt(pow($maxWidth,2) / 2);
+  $offset: $maxWidth - 100;
+  $remainder:((-$size + $maxWidth - $offset) / 2)+vw;
+  $size:$size + vw;
+  content:'';
+  display:block;
+  position:absolute;
+  width:$size;
+  height:$size;
+  top:$remainder;
+  left:$remainder;
+  z-index:-1;
+  overflow:hidden;
+  &::before {
+    transform: rotate(-45deg);
+    content:'';
+    display:block;
+    position:absolute;
+    height:$maxWidth + vw;
+    width:$maxWidth + vw;
+    top:calc(-#{$remainder} - #{($offset / 2)+vw});
+    left:calc(-#{$remainder} - #{($offset / 2)+vw});
+    background-image:$background;
+    background-attachment:fixed;
+    background-size:cover;
+    // transform: rotate(-45deg);
+  }
+}

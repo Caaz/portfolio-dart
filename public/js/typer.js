@@ -43,7 +43,6 @@ $(function(){
       'a Sarcastic Asshole',
       'a College Student',
       'an X-Files Lover',
-      'Annoyed by Grammar',
       'Probably Sleeping',
       'Addicted to Starbucks',
       'Loving Electro-Swing',
@@ -57,7 +56,7 @@ $(function(){
       'Feeding PB&J to the Fish',
       "Just Here so I Don't Get Fined",
       'a Pro at RegEx',
-      'a Tutor at FCC!a'
+      'a Tutor at FCC!'
     ]
   );
 });

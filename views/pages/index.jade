@@ -1,13 +1,21 @@
 extends ../layouts/application.jade
 block head
   link(rel='stylesheet',href='/css/index.css')
+  script(src='/js/typer.js')
+  
 block main
-  section 
-    h1 Hello World
-  section#space
+  section#home
+    h1 Hi, I'm Daniel Cavazos, and I'm <span id='iAmA'></span>
+    p For the most part however, I'm a web developer. I focus on back end work but I have the skills to do front end as well, and when I do I make sure to make it as over the top as possible. A lot of my time is spent working on projects, doing my best to optimize my code. I rarely take any breaks because programming is what I love.
+    p If you want an Idea of some of the stuff I've worked on, feel free to check out my github account and browse through my repositories, or feel free to contact me to see if I'm doing anything interesting at the moment!
+  section#skills.diamond
     span
     span
     span
-    h1 Ayy lmao
-  section
-    h1 dicks
+    h1 My Skills
+    ul
+      each skill in ['Perl', 'Dart', 'Java', 'Ruby on Rails', 'C', 'C++', 'Objective C', 'Python', 'Javascript', 'JQuery', 'CSS', 'Sass', 'HTML5', 'Jade']
+        li=skill
+  section#contact
+    h1 Contact
+    include ../partials/contact.jade

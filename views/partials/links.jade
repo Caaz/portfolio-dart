@@ -1,4 +1,2 @@
-each url, icon in { 'home':'/', 'question':'/404', 'facebook':'/404' }
-  a(href="#{url}")
-    i
-    i(class="fa fa-#{icon}")
+each url, icon in { 'code':'/#skills', 'home':'/#home', 'phone':'/#contact', }
+  a(href="#{url}", class="fa fa-#{icon}")

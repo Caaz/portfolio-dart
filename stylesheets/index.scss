@@ -1,46 +1,47 @@
 @import "variables";
 @import "math";
-@mixin rotation($deg) {
-  -ms-transform: rotate($deg); /* IE 9 */
-  -webkit-transform: rotate($deg); /* Chrome, Safari, Opera */
-  transform: rotate($deg);
-}
-@mixin diamond($maxWidth, $background) {
-  @include rotation(45deg);
-  $size:sqrt(pow($maxWidth,2) / 2);
-  $offset: $maxWidth - 100;
-  $remainder:((-$size + $maxWidth - $offset) / 2)+vw;
-  $size:$size + vw;
-  content:'';
-  display:block;
-  position:absolute;
-  width:$size;
-  height:$size;
-  top:$remainder;
-  left:$remainder;
-  z-index:-1;
-  overflow:hidden;
-  &::before {
-    @include rotation(-45deg);
-    content:'';
-    display:block;
-    position:absolute;
-    height:$maxWidth + vw;
-    width:$maxWidth + vw;
-    top:calc(-#{$remainder} - #{($offset / 2)+vw});
-    left:calc(-#{$remainder} - #{($offset / 2)+vw});
-    background-image:$background;
-    background-attachment:fixed;
-    background-size:cover;
-    // transform: rotate(-45deg);
-  }
-}
+@import "mixins";
 
-#space {
+#skills {
   position:relative;
   min-height:100vw;
-  > span:nth-of-type(1) { @include diamond(120, nth($images,2)); }
-  > span:nth-of-type(2) { @include diamond(110, nth($images,3)); }
+  $thickness:20;
+  margin:$thickness + vw 0;
+  > span:nth-of-type(1) { @include diamond(100 + $thickness * 2, nth($images,2)); }
+  > span:nth-of-type(2) { @include diamond(100 + $thickness, nth($images,3)); }
   > span:nth-of-type(3) { @include diamond(100, nth($images,2)); }
 }
-// .diamond { @include diamond(); }
+#contact {
+  // overflow:hidden;
+  position:relative;
+  &::before {
+    position:absolute;
+    z-index: -1;
+    content:'';
+    height:100%;
+    width:calc(150vw + 50px);
+    left:-25vw;
+    top:0;
+    background-color:rgba(0, 0, 0, 0.8);
+    box-shadow:0 -50px 50px rgba(0, 0, 0, 0.8);
+  }
+}
+@media (max-width: 640px), (orientation: portrait) {
+  #skills {
+    >span:nth-of-type(1), >span:nth-of-type(2) { display:none; }
+    > span {
+      transform: none!important;
+      height:100vh!important;
+      width:100vw!important;
+      left:0px!important;
+      top:0px!important;
+      &::before {
+        transform:none!important;
+        height:100vh!important;
+        width:100vw!important;
+        left:0px!important;
+        top:0px!important;
+      }
+    }
+  }
+}

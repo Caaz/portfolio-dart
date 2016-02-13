@@ -1,17 +1,61 @@
-$colors:
-// Foreground Color
-#FFF
-// Background Color
-#222;
+@import "variables";
 
+$sizeSide:40px;
+$sizeBottom:$sizeSide;
+
+* {
+  margin:0px;
+  padding:0px;
+}
 body {
   display:flex;
   width:100vw;
   height:100vh;
-  > aside {
-    background-color:#222;
+  > nav {
+    width:$sizeSide;
+    background-color:nth($colors,2);
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    font-size:$sizeSide/1.6;
+    > a {
+      position:relative;
+      display:flex!important;
+      justify-content:center;
+      align-items:center;
+      width:$sizeSide;
+      height:$sizeSide;
+      color:nth($colors,1);
+      text-decoration:none;
+      &:hover > i:first-of-type { border-right-width:$sizeSide; }
+      > i:first-of-type {
+        position:absolute;
+        box-sizing: border-box;
+        width:$sizeSide;
+        height:$sizeSide;
+        top:0;
+        left:0;
+        border:0 solid nth($colors,3);
+        transition: border-right-width 200ms linear;
+      }
+    }
   }
   > main {
+    color:nth($colors,1);
     flex-grow:1;
+    z-index:1;
+    background-image:nth($images,3);
+    background-attachment: fixed;
+    background-size:cover;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    // min-height:100vh;
+    > section {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
   }
 }

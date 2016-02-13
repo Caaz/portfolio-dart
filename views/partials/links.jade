@@ -1,4 +1,4 @@
-a.fa.fa-home(href='/')
-//- a(href='#about') About Me
-//- a(href='#projects') Projects
-//- a(href='#contact') Contact
+each url, icon in { 'home':'/', 'question':'/404', 'facebook':'/404' }
+  a(href="#{url}")
+    i
+    i(class="fa fa-#{icon}")

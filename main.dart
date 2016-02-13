@@ -15,6 +15,7 @@ main() async {
   ..use(new HybridFileHandler('public'))
   // Index page, nothing fancy.
   ..get('/', (ctx) => renderPage(ctx,'index'))
+  // Start the server.
   ..listen('0.0.0.0', 80);
 }
 renderPage(HttpContext ctx,String page) => ctx..sendHtml(pages[page]())..end();
@@ -26,15 +27,13 @@ class HybridFileHandler extends StaticFileHandler {
     String path = relativePath(ctx.req.uri.path);
     logDebug("serving $path");
     File file = new File(path);
-    file.exists().then((bool exists) {
-      if (exists) {
-        ctx.responseContentType = ContentTypes.getContentType(file);
-        file.openRead()
-        .pipe(ctx.res)
-        .catchError((e) => ctx.sendText("error sending '$path': $e", contentType: "text/plain", httpStatus: 500, statusReason:"static file error"));
-      } else
-        renderPage(ctx,'404');
-    });
+    if (file.existsSync()) {
+      ctx.responseContentType = ContentTypes.getContentType(file);
+      file.openRead()
+      .pipe(ctx.res)
+      .catchError((e) => ctx.sendText("error sending '$path': $e", contentType: "text/plain", httpStatus: 500, statusReason:"static file error"));
+    }
+    else renderPage(ctx,'404');
   }
 }
 
@@ -48,9 +47,9 @@ Future<Map> _compile() async {
   for (var file in new Directory('./stylesheets/').listSync())
     if (file is File)
       // Check if there's an underscore, we don't want to compile those.
-      if (!underscore.hasMatch(file.path))
+      if (!underscore.hasMatch(file.path)) {
         // Run our command and print the output.
-        print(Process.runSync('sass', [
+        var out = Process.runSync('sass', [
           // Use scss, the superset of css.
           '--scss',
           // Compress it for bandwidth reasons.
@@ -60,7 +59,10 @@ Future<Map> _compile() async {
           // Original file path
           file.path,
           // New file path, as css.
-          './public/css/'+fname.firstMatch(file.path).group(1)+'.css']).stdout);
+          './public/css/'+fname.firstMatch(file.path).group(1)+'.css']);
+        print(out.stdout);
+        print(out.stderr);
+      }
 
   // Compile our jade pages.
   new File('jade.views.dart').writeAsStringSync(jade.renderDirectory('views/pages/'));

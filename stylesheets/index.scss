@@ -42,6 +42,8 @@
 }
 @media (max-width: 640px), (orientation: portrait) {
   #skills {
+    z-index:-2;
+    margin:0px 0 -80px 0;
     >span:nth-of-type(1), >span:nth-of-type(2) { display:none; }
     > span {
       transform: none!important;

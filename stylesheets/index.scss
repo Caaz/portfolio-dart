@@ -16,6 +16,7 @@
 }
 #home, #contact {
   position:relative;
+  background-color:rgba(0, 0, 0, 0.8);
   &::before {
     top:0;
     content:'';
@@ -24,17 +25,21 @@
     height:100%;
     position:absolute;
     width:calc(150vw + 50px);
-    background-color:rgba(0, 0, 0, 0.8);
   }
 }
 #home::before { box-shadow:0 50px 50px rgba(0, 0, 0, 0.8); }
 #contact::before { box-shadow:0 -50px 50px rgba(0, 0, 0, 0.8); }
 
 @media (max-width: 640px), (orientation: portrait) {
+  section:not(#skills)::before {
+    background-image: nth($images,3);
+    background-attachment: fixed;
+    background-size:cover;
+  }
   #skills {
     z-index:-2;
     min-height:100vh;
-    margin:0px 0 -80px 0;
+    margin:0;
     > span:nth-of-type(1), > span:nth-of-type(2) { display:none; }
     > span, > span::before {
       transform: none!important;

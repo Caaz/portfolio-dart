@@ -4,91 +4,75 @@
 $sizeNav:30px;
 $sizeSide:40px;
 $sizeBottom:$sizeSide;
-* {
-  margin:0px; padding:0px;
-  font-family:sans-serif;
-}
+* { margin:0px; padding:0px; font-family:sans-serif; }
 h1 { font-variant:small-caps; }
 body {
   background-image:nth($images,3);
   background-attachment: fixed;
   background-size:cover;
   > nav {
-    z-index:10;
-    position:fixed;
     top:0px;
     left:0px;
-    width:100vw;
-    height:$sizeNav;
+    z-index:10;
     display:flex;
+    width:100vw;
+    position:fixed;
+    height:$sizeNav;
     justify-content: center;
     background-color: nth($colors,2);
     > a {
-      position:relative;
-      display:flex!important;
-      align-items:center;
-      justify-content:center;
       font-size:$sizeNav / 1.5!important;
+      display:flex!important;
+      justify-content:center;
       text-decoration:none;
       color:nth($colors,1);
-      width:$sizeNav;
+      align-items:center;
+      position:relative;
       height:$sizeNav;
+      width:$sizeNav;
       &::after {
+        top:0;
+        left:0;
         content:'';
-        box-sizing:border-box;
-        position:absolute;
+        z-index:-1;
         width:$sizeNav;
         height:$sizeNav;
-        left:0;
-        top:0;
+        position:absolute;
+        box-sizing:border-box;
         border:0 solid nth($colors,3);
-        z-index:-1;
         transition:border-top-width 200ms linear;
       }
-      &:hover::after {
-        border-top-width:$sizeNav;
-      }
+      &:hover::after { border-top-width:$sizeNav; }
     }
   }
   > main {
-    color:nth($colors,1);
-    flex-grow:1;
     z-index:1;
-    // overflow-y:scroll;
+    flex-grow:1;
     overflow-x:hidden;
+    color:nth($colors,1);
     > section {
-      box-sizing: border-box;
-      padding:50px;
-      padding-top:$sizeNav;
-      min-height:100vh;
       display:flex;
-      flex-direction:column;
+      padding:50px;
+      min-height:100vh;
       align-items:center;
+      padding-top:$sizeNav;
+      flex-direction:column;
       justify-content:center;
-      > h1 {
-        @include text-outline(2px, 1px);
-        font-size:20px;
-        text-align:center;
-      }
-      > p {
-        margin-top:20px;
-        text-indent:50px;
-      }
+      box-sizing: border-box;
+      > h1 { font-size:20px; text-align:center; }
+      > p { margin-top:20px; text-indent:50px; }
       > ul {
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
         list-style:none;
         display:flex;
-        align-items: center;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        > li {
-          margin:20px 20px 0 20px;
-          @include text-outline(1px, 1px);
-        }
+        > li { margin:20px 20px 0 20px; }
       }
       > a {
-        padding-top:20px;
-        color:nth($colors,1);
         text-decoration:none;
+        color:nth($colors,1);
+        padding-top:20px;
       }
     }
   }

@@ -7,9 +7,7 @@ $sizeBottom:$sizeSide;
 * { margin:0px; padding:0px; font-family:sans-serif; }
 h1 { font-variant:small-caps; }
 body {
-  background-image:nth($images,3);
-  background-attachment: fixed;
-  background-size:cover;
+  background-color: nth($colors,4);
   > nav {
     top:0px;
     left:0px;

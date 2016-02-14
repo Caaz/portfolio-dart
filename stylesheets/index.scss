@@ -1,6 +1,10 @@
 @import "variables";
 @import "mixins";
-
+body {
+  background-image:nth($images,3);
+  background-attachment: fixed;
+  background-size:cover;
+}
 .dim { opacity:.3; }
 #skills {
   position:relative;

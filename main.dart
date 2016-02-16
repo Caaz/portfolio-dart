@@ -4,6 +4,8 @@ import 'jade.views.dart' deferred as jadeViews;
 
 main() async {
   String chain = '';
+  Map<String, String> env = Platform.environment;
+  env.forEach((k, v) => print("Key=$k Value=$v"));
   if (Platform.environment.containsKey('CHAIN')) {
     chain = Platform.environment['CHAIN'];
     print("Got chain: $chain");

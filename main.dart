@@ -15,5 +15,8 @@ main() async {
     return true;
   })
 
-  ..listen(InternetAddress.ANY_IP_V4, 80, chain:(config.containsKey("chain"))?config['chain'].toString():'');
+  ..listen(InternetAddress.ANY_IP_V4,
+    (config.containsKey("chain"))?443:80,
+    chain:(config.containsKey("chain"))?config['chain'].toString():'',
+    key:(config.containsKey("key")?config['key'].toString():''));
 }

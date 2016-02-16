@@ -24,14 +24,8 @@ main() async {
   if(config.containsKey("chain")) {
     HttpServer.bind(InternetAddress.ANY_IP_V4,80).then((HttpServer server) {
       server.listen((HttpRequest req) {
-        req.response.redirect(
-          new Uri(
-            scheme: 'https',
-            host: 'caaz.me',  // Make this dynamic at some point
-            path: req.uri.path,
-            fragment: req.uri.fragment)
-          ));
-        }
+        req.response.redirect( new Uri( scheme: 'https', host: 'caaz.me', path: req.uri.path, fragment: req.uri.fragment ) );
+      });
     });
   }
 }

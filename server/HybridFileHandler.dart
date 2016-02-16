@@ -6,7 +6,7 @@ import "../jade.views.dart" deferred as views;
 
 class HybridFileHandler extends StaticFileHandler {
   String atPath;
-  HybridFileHandler([this.atPath]);
+  HybridFileHandler([this.atPath]) { _compile(); }
   void execute(HttpContext ctx){
     String path = relativePath(ctx.req.uri.path);
     logDebug("serving $path");
@@ -19,14 +19,14 @@ class HybridFileHandler extends StaticFileHandler {
     }
     else renderView(ctx,'404');
   }
-  Future compileViews() async {
+  Future _compile() async {
     RegExp fileName = new RegExp(r'.+/(.+?)\.(?:.+?)$');
     RegExp underscore = new RegExp(r'/_.+$');
     // Compile stylesheets.
     for (var file in new Directory('stylesheets/').listSync())
       if ((file is File) && (!underscore.hasMatch(file.path)))
         Process.run('sass', [ '--scss', '--style=compressed', '--sourcemap=none',
-          file.path, 'public/css/'+fileName.firstMatch(file.path).group(1)+'.css'])
+          file.path, '$atPath/css/'+fileName.firstMatch(file.path).group(1)+'.css'])
           ..then((proc){ if(proc.stderr.length>1) throw proc.stderr; });
     // Compile jade.
     new File('jade.views.dart').writeAsStringSync(jade.renderDirectory('views/pages/'));

@@ -19,4 +19,12 @@ main() async {
     (config.containsKey("chain"))?443:80,
     chain:(config.containsKey("chain"))?config['chain'].toString():'',
     key:(config.containsKey("key")?config['key'].toString():''));
+
+  // Redirect http to https.
+  HttpServer.bind(InternetAddress.ANY_IP_V4,80).then((HttpServer server) {
+    server.listen((HttpRequest req) {
+      req.response.redirect(req.uri.replace(scheme: 'https'));
+      // req.response.redirect(new Uri(''));
+    });
+  });
 }

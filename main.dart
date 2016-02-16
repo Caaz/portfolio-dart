@@ -1,10 +1,18 @@
-import "server/HybridFileHandler.dart";
-import "package:express/express.dart";
+import "dart:io";
+import "package:carbon/carbon.dart";
+import 'jade.views.dart' deferred as jadeViews;
 
 main() async {
-  HybridFileHandler hybrid = new HybridFileHandler('public');
-  new Express()
-  ..use(hybrid)
-  ..get('/', (ctx) => hybrid.renderView(ctx,'index'))
-  ..listen('0.0.0.0', 80);
+  Carbon server = new Carbon(dirCompile:'public/css');
+  await jadeViews.loadLibrary();
+
+  server
+  ..views(jadeViews.JADE_TEMPLATES)
+
+  ..route('GET','/',(req) {
+    server.render(req.response, 'index');
+    return true;
+  })
+
+  ..listen(InternetAddress.ANY_IP_V4, 80);
 }

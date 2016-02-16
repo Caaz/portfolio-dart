@@ -1,7 +1,8 @@
 name: caaz_me
-version: 0.0.1
+version: 0.1.0
 description: >
-  Server side software for a dynamic site.
+  My portfolio, at http://caaz.me/
 author: Daniel Caaz <DCaazy@gmail.com>
 dependencies:
-  express: 0.1.6
+  carbon:
+    git: git://github.com/Caaz/carbon.git

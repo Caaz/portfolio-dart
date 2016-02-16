@@ -22,14 +22,13 @@ main() async {
 
   // Redirect http to https.
   HttpServer.bind(InternetAddress.ANY_IP_V4,80).then((HttpServer server) {
-    server.listen((HttpRequest req) {
-      print("Got a request! redirecting?");
-      // req.response.redirect(req.uri.replace(scheme: 'https'));
-
-      req.response.redirect(new Uri(scheme: 'https', host: 'caaz.me', path: req.uri.path, fragment: req.uri.fragment));
-      // req.response.close();
-      // req.response.redirect(new Uri(''));
-    });
-    print("Also listening at 80");
+    server.listen((HttpRequest req) =>
+      req.response.redirect(
+        new Uri(
+          scheme: 'https',
+          host: 'caaz.me',  // Make this dynamic at some point
+          path: req.uri.path,
+          fragment: (req.uri.fragment.substring(1).isNotEmpty)?req.uri.fragment:null)
+        ));
   });
 }

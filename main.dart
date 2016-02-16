@@ -21,14 +21,16 @@ main() async {
     key:(config.containsKey("key")?config['key'].toString():''));
 
   // Redirect http to https.
-  HttpServer.bind(InternetAddress.ANY_IP_V4,80).then((HttpServer server) {
-    server.listen((HttpRequest req) =>
-      req.response.redirect(
-        new Uri(
-          scheme: 'https',
-          host: 'caaz.me',  // Make this dynamic at some point
-          path: req.uri.path,
-          fragment: (req.uri.fragment.substring(1).isNotEmpty)?req.uri.fragment:null)
-        ));
-  });
+  if(config.containsKey("chain")) {
+    HttpServer.bind(InternetAddress.ANY_IP_V4,80).then((HttpServer server) {
+      server.listen((HttpRequest req) =>
+        req.response.redirect(
+          new Uri(
+            scheme: 'https',
+            host: 'caaz.me',  // Make this dynamic at some point
+            path: req.uri.path,
+            fragment: (req.uri.fragment.substring(1).isNotEmpty)?req.uri.fragment:null)
+          ));
+    });
+  }
 }

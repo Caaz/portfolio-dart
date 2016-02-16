@@ -1,15 +1,10 @@
 import "dart:io";
+import 'dart:convert';
 import "package:carbon/carbon.dart";
 import 'jade.views.dart' deferred as jadeViews;
 
 main() async {
-  String chain = '';
-  Map<String, String> env = Platform.environment;
-  env.forEach((k, v) => print("Key=$k Value=$v"));
-  if (Platform.environment.containsKey('CHAIN')) {
-    chain = Platform.environment['CHAIN'];
-    print("Got chain: $chain");
-  }
+  Map config = JSON.decode(new File('config.json').readAsStringSync());
   Carbon server = new Carbon(dirCompile:'public/css');
   await jadeViews.loadLibrary();
   server
@@ -20,5 +15,5 @@ main() async {
     return true;
   })
 
-  ..listen(InternetAddress.ANY_IP_V4, (chain.isNotEmpty)?443:80, chain:chain);
+  ..listen(InternetAddress.ANY_IP_V4, (config.containsKey("chain"))?443:80, chain:(config.containsKey("chain"))?config['chain']:'');
 }

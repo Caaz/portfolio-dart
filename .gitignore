@@ -7,3 +7,6 @@ jade.views.dart
 
 # Compiled stuff that will be recompiled anyway.
 public/css
+
+# Local things
+config.json

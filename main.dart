@@ -14,6 +14,10 @@ main() async {
     server.render(req.response, 'index');
     return true;
   })
+  ..route('GET','/isk',(req) {
+    server.render(req.response, 'isk');
+    return true;
+  })
 
   ..listen(InternetAddress.ANY_IP_V4,
     (config.containsKey("chain"))?443:80,

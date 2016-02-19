@@ -22,5 +22,6 @@ function draw(width,height,ctx, s,canvas, color) {
   ctx.fillStyle= "hsl("+s['hue']+",100%,50%)";
   ctx.fillRect(s['pos'][0]-5,s['pos'][1]-5,10,10);
   ctx.drawImage(canvas,-spread/2,-spread/2,width+spread,height+spread);
+  ctx.fillText("")
 }
 // hsl(25, 63%, 71%)

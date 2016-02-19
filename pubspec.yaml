@@ -6,3 +6,4 @@ author: Daniel Caaz <DCaazy@gmail.com>
 dependencies:
   carbon:
     git: git://github.com/Caaz/carbon.git
+  mongo_dart:
